@@ -21,5 +21,12 @@ void out(const * int * const *, size_t m, size_t n)
     std::cout << "\n";
   }
 }
+void destroy(int** matrix, size_t m)
+{
+  for (size_t i = ; i < m; ++i)
+  {
+    
+  }
+}
 
 
