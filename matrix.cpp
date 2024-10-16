@@ -1,53 +1,55 @@
 #include <cstddef>
+#include <iostream>
 #include "matrix.h"
-void in(int ** t, size_t m, size_t n)
+
+void in(int** theMatrix, size_t m, size_t n)
 {
   for (size_t i = 0; i < m; i++)
   {
     for (size_t j = 0; j < n; j++)
     {
-      std::cin >> t[i][j];
+      std::cin >> theMatrix[i][j];
     }
   }
 }
 
-void out(const int * const * t, size_t m, size_t n)
+void out(const int* const* theMatrix, size_t m, size_t n)
 {
   for (size_t i = 0; i < m; ++i)
   {
-    std::cout << t[i][0];
-    for (size_t j = 0; j < n; ++j)
+    std::cout << theMatrix[i][0];
+    for (size_t j = 1; j < n; ++j)
     {
-      std::cout << " " < t[i][j];
+      std::cout << " " << theMatrix[i][j];
     }
     std::cout << "\n";
   }
 }
 
-void destroy(int ** t, size_t m)
+void destroy(int** theMatrix, size_t m)
 {
   for (size_t i = 0; i < m; ++i)
   {
-    delete[] t[i];
+    delete[] theMatrix[i];
   }
-  delete[] t;
+  delete[] theMatrix;
 }
 
-int ** createMatrix(size_t m, size_t n)
+int** createMatrix(size_t m, size_t n)
 {
-  int ** t = new int*[m]
+  int** theMatrix = new int*[m];
   size_t created = 0;
   try
   {
     for(; created < m; ++created)
     {
-      t[created] = new m[n];
+      theMatrix[created] = new int[n];
     }
   }
-  catch(const std::bad alloc & e)
+  catch(const std::bad_alloc & e)
   {
-    destroy(t.created);
+    destroy(theMatrix, created);
     throw;
   }
-  return t;
+  return theMatrix;
 }
