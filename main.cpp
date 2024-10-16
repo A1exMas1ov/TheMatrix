@@ -7,6 +7,15 @@ int main()
   size_t M = 0, N = 0;
   std::cin >> M >> N;
   std::cout << M << " " << N << "\n";
-  int** matrix = createMatrix(M,N);
-  destroy(matrix, M, N);
+  try
+  {
+    int ** t = createMatrix(M,N);
+    in(t, M, N);
+    out(t, M, N);
+    destroy(t, M);
+  }
+  catch(const std::bad_alloc & e)
+  {
+    return 1;
+  }
 }
