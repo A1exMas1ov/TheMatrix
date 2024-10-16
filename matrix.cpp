@@ -49,6 +49,5 @@ int ** createMatrix(size_t m, size_t n)
     destroy(t.created);
     throw;
   }
-  return **t;
+  return t;
 }
-
