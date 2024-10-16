@@ -16,7 +16,6 @@ int main()
   }
   catch(const std::bad_alloc & e)
   {
-
     return 1;
   }
 }
