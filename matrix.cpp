@@ -40,7 +40,7 @@ int ** createMatrix(size_t m, size_t n)
   size_t created = 0;
   try
   {
-    for(; created < m; ++created)
+    for (; created < m; ++created)
     {
       theMatrix[created] = new int[n];
     }
