@@ -9,6 +9,7 @@ void inputMatrix(int ** theMatrix, size_t m, size_t n);
 void outputMatrix(const int * const * theMatrix, size_t m, size_t n);
 void copyMatrix(int ** destination, const int * const * source,
     size_t m, size_t n);
+
 struct Matrix
 {
   Matrix(size_t M, size_t N):
@@ -37,7 +38,7 @@ struct Matrix
   size_t getColumns() const;
   void fill(int value);
   void resize(size_t newM, size_t newN);
-private:
+ private:
   int ** t_;
   size_t m_, n_;
 };
