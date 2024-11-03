@@ -74,15 +74,14 @@ void Matrix::fill(int value)
   }
 }
 
-void Matrix::set(size_t i, size_t j, int value)
-{
-    t_[i][j] = value;
-}
-
 void Matrix::resize(size_t newM, size_t newN)
 {
-  int ** newMatrix = createMatrix(newM, newN);
-  if (newMatrix == nullptr)
+  int ** newMatrix = nullptr;
+  try
+  {
+    newMatrix = createMatrix(newM, newN);
+  }
+  catch (const std::bad_alloc & e)
   {
     std::cerr << "Out of memory\n";
     return;
@@ -106,4 +105,3 @@ void Matrix::resize(size_t newM, size_t newN)
   m_ = newM;
   n_ = newN;
 }
-

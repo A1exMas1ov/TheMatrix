@@ -17,8 +17,4 @@ int main()
     return 1;
   }
   theMatrix.output();
-  theMatrix.resize(2,2);
-  theMatrix.output();
-  theMatrix.resize(3, 3);
-  theMatrix.output();
 }
