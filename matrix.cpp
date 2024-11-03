@@ -105,3 +105,14 @@ void Matrix::resize(size_t newM, size_t newN)
   m_ = newM;
   n_ = newN;
 }
+
+void copyMatrix(int ** destination, const int *const * source, size_t m, size_t n)
+{
+  for (size_t i = 0; i < m; i++)
+  {
+    for (size_t j = 0; j < n; j++)
+    {
+      destination[i][j] = source[i][j];
+    }
+  }
+}
