@@ -8,9 +8,8 @@ void destroyMatrix(int ** theMatrix, size_t m);
 void inputMatrix(int ** theMatrix, size_t m, size_t n);
 void outputMatrix(const int * const * theMatrix, size_t m, size_t n);
 
-class Matrix
+struct Matrix
 {
-public:
   Matrix(size_t M, size_t N):
     t_(::createMatrix(M, N)), m_(M), n_(N)
   {}
@@ -26,6 +25,11 @@ public:
   {
     ::outputMatrix(t_, m_, n_);
   }
+  size_t getRows() const;
+  size_t getColumns() const;
+  void fill(int value);
+  void resize(size_t newM, size_t newN);
+  void set(size_t i, size_t j, int value);
 private:
   int ** t_;
   size_t m_, n_;

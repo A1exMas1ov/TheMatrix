@@ -52,3 +52,58 @@ int ** createMatrix(size_t m, size_t n)
   }
   return theMatrix;
 }
+
+size_t Matrix::getRows() const
+{
+  return m_;
+}
+
+size_t Matrix::getColumns() const
+{
+  return n_;
+}
+
+void Matrix::fill(int value)
+{
+  for (size_t i = 0; i < m_; i++)
+  {
+    for (size_t j = 0; j < n_; j++)
+    {
+      t_[i][j] = value;
+    }
+  }
+}
+
+void Matrix::set(size_t i, size_t j, int value)
+{
+    t_[i][j] = value;
+}
+
+void Matrix::resize(size_t newM, size_t newN)
+{
+  int ** newMatrix = createMatrix(newM, newN);
+  if (newMatrix == nullptr)
+  {
+    std::cerr << "Out of memory\n";
+    return;
+  }
+  for (size_t i = 0; i < std::min(m_, newM); i++)
+  {
+    for (size_t j = 0; j < std::min(n_, newN); j++)
+    {
+      newMatrix[i][j] = t_[i][j];
+    }
+  }
+  for (size_t i = std::min(m_, newM); i < newM; i++)
+  {
+    for (size_t j = 0; j < newN; j++)
+    {
+      newMatrix[i][j] = 0;
+    }
+  }
+  destroyMatrix(t_, m_);
+  t_ = newMatrix;
+  m_ = newM;
+  n_ = newN;
+}
+

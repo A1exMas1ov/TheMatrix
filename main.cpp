@@ -4,7 +4,7 @@
 int main()
 {
   size_t M = 0, N = 0;
-  if (!std::cin >> M >> N)
+  if (!(std::cin >> M >> N))
   {
     std::cerr << "Rows or columns are not a number\n";
     return 1;
@@ -16,5 +16,9 @@ int main()
     std::cerr << "Elements are not a number\n";
     return 1;
   }
+  theMatrix.output();
+  theMatrix.resize(2,2);
+  theMatrix.output();
+  theMatrix.resize(3, 3);
   theMatrix.output();
 }
