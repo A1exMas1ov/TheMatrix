@@ -1,8 +1,7 @@
-#include <cstddef>
-#include <iostream>
 #include "matrix.h"
+#include <iostream>
 
-void in(int** theMatrix, size_t m, size_t n)
+void inputMatrix(int ** theMatrix, size_t m, size_t n)
 {
   for (size_t i = 0; i < m; i++)
   {
@@ -13,7 +12,7 @@ void in(int** theMatrix, size_t m, size_t n)
   }
 }
 
-void out(const int* const* theMatrix, size_t m, size_t n)
+void outputMatrix(const int * const * theMatrix, size_t m, size_t n)
 {
   for (size_t i = 0; i < m; ++i)
   {
@@ -26,7 +25,7 @@ void out(const int* const* theMatrix, size_t m, size_t n)
   }
 }
 
-void destroy(int** theMatrix, size_t m)
+void destroyMatrix(int ** theMatrix, size_t m)
 {
   for (size_t i = 0; i < m; ++i)
   {
@@ -35,9 +34,9 @@ void destroy(int** theMatrix, size_t m)
   delete[] theMatrix;
 }
 
-int** createMatrix(size_t m, size_t n)
+int ** createMatrix(size_t m, size_t n)
 {
-  int** theMatrix = new int*[m];
+  int ** theMatrix = new int*[m];
   size_t created = 0;
   try
   {
@@ -46,9 +45,9 @@ int** createMatrix(size_t m, size_t n)
       theMatrix[created] = new int[n];
     }
   }
-  catch(const std::bad_alloc & e)
+  catch (const std::bad_alloc & e)
   {
-    destroy(theMatrix, created);
+    destroyMatrix(theMatrix, created);
     throw;
   }
   return theMatrix;

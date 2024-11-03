@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstddef>
 #include "matrix.h"
 
 int main()
@@ -8,24 +7,25 @@ int main()
   std::cin >> M >> N;
   if (!std::cin)
   {
-    std::cerr << "Not a number\n";
+    std::cerr << "Rows or columns are not a number\n";
     return 1;
   }
-  int** theMatrix = nullptr;
+  int ** theMatrix = nullptr;
   try
   {
     theMatrix = createMatrix(M,N);
   }
-  catch(const std::bad_alloc & e)
+  catch (const std::bad_alloc & e)
   {
     return 1;
   }
-  in(theMatrix, M, N);
+  inputMatrix(theMatrix, M, N);
   if (!std::cin)
   {
-    std::cerr << "Not a number\n";
+    destroyMatrix(theMatrix, M);
+    std::cerr << "Elements are not a number\n";
     return 1;
   }
-  out(theMatrix, M, N);
-  destroy(theMatrix, M);
+  outputMatrix(theMatrix, M, N);
+  destroyMatrix(theMatrix, M);
 }
